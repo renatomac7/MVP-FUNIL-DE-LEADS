@@ -11,6 +11,7 @@ interface ResultsDashboardProps {
   savings: number;
   annualRevenue: number;
   activityType?: 'commerce' | 'services' | 'industry' | 'transport';
+  isImprecise?: boolean;
 }
 
 export function ResultsDashboard({
@@ -20,7 +21,8 @@ export function ResultsDashboard({
   bestOption,
   savings,
   annualRevenue,
-  activityType = 'services'
+  activityType = 'services',
+  isImprecise = false,
 }: ResultsDashboardProps) {
   // Calcular impacto da Reforma 2026
   const reforma2026 = calculateReforma2026Impact(annualRevenue, activityType);
@@ -71,6 +73,18 @@ export function ResultsDashboard({
 
   return (
     <div className="space-y-6 animate-slide-up">
+      {/* Imprecise Report Warning */}
+      {isImprecise && (
+        <Alert className="border-amber-500 bg-amber-50 dark:bg-amber-950/20">
+          <AlertTriangle className="h-5 w-5 text-amber-600" />
+          <AlertTitle className="text-amber-800 dark:text-amber-200 font-bold">Relatório Preliminar (Dados Parciais)</AlertTitle>
+          <AlertDescription className="text-amber-700 dark:text-amber-300 text-sm">
+            A margem de erro pode ser alta pois <strong>Folha de Pagamento</strong> e <strong>Despesas</strong> não foram consideradas.
+            Isso afeta diretamente o cálculo do Fator R e Lucro Real.
+          </AlertDescription>
+        </Alert>
+      )}
+
       {/* Best Option Banner */}
       <div className="relative overflow-hidden rounded-2xl gradient-success p-6 text-success-foreground">
         <div className="absolute top-0 right-0 w-32 h-32 bg-success-foreground/10 rounded-full -mr-16 -mt-16" />

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, Phone, Lock, Gift, CheckSquare } from "lucide-react";
+import { Phone, Lock, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,7 +14,7 @@ interface LeadCaptureModalProps {
   onClose: () => void;
 }
 
-export function LeadCaptureModal({ savings, companyName, onSubmit, onClose }: LeadCaptureModalProps) {
+export function LeadCaptureModal({ savings, companyName, onSubmit }: LeadCaptureModalProps) {
   const [phone, setPhone] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
@@ -34,14 +34,8 @@ export function LeadCaptureModal({ savings, companyName, onSubmit, onClose }: Le
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/50 backdrop-blur-sm animate-fade-in">
       <div className="relative w-full max-w-md bg-card rounded-2xl shadow-elevated animate-scale-in overflow-hidden">
-        {/* Header */}
+        {/* Header - SEM BOTÃO DE FECHAR */}
         <div className="gradient-success p-6 text-success-foreground">
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full hover:bg-success-foreground/20 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
 
           <div className="flex items-center justify-center mb-4">
             <div className="p-3 bg-success-foreground/20 rounded-full">

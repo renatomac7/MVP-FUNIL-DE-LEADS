@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calculator } from "lucide-react";
+import { Calculator, ArrowLeft } from "lucide-react";
 import { HeroSection } from "@/components/HeroSection";
 import { CNPJInput } from "@/components/CNPJInput";
 import { RevenueForm } from "@/components/RevenueForm";
@@ -25,6 +25,7 @@ export default function Index() {
   const [showLeadModal, setShowLeadModal] = useState(false);
   const [leadPhone, setLeadPhone] = useState<string | null>(null);
   const [isSavingLead, setIsSavingLead] = useState(false);
+  const [isResultsImprecise, setIsResultsImprecise] = useState(false);
 
   const handleCNPJData = (data: CNPJData, activity: 'commerce' | 'services' | 'industry' | 'transport') => {
     setCompanyData(data);
@@ -32,8 +33,9 @@ export default function Index() {
     setStep(2);
   };
 
-  const handleCalculate = (input: TaxInput) => {
+  const handleCalculate = (input: TaxInput, isImprecise = false) => {
     setTaxInput(input);
+    setIsResultsImprecise(isImprecise);
     const calculatedResults = calculateAllRegimes(input);
     setResults(calculatedResults);
 
@@ -99,6 +101,16 @@ export default function Index() {
       <HeroSection />
 
       <main className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+        {step > 1 && (
+          <button
+            onClick={() => setStep((s) => Math.max(1, s - 1) as Step)}
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4 transition-colors text-sm font-medium"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Voltar
+          </button>
+        )}
+
         <StepIndicator currentStep={step} steps={STEPS} />
 
         <div className="bg-card rounded-2xl shadow-elevated border border-border p-6 sm:p-8">
@@ -157,6 +169,7 @@ export default function Index() {
                 savings={results.savings}
                 annualRevenue={taxInput.annualRevenue}
                 activityType={taxInput.activityType}
+                isImprecise={isResultsImprecise}
               />
 
               {/* WhatsApp CTA - Elemento Principal de Conversão */}

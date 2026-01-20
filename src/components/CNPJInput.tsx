@@ -62,12 +62,14 @@ export function CNPJInput({ onDataFetched }: CNPJInputProps) {
             <Input
               id="cnpj"
               type="text"
+              inputMode="numeric"
               placeholder="00.000.000/0000-00"
               value={cnpj}
               onChange={handleCNPJChange}
               onKeyDown={handleKeyDown}
-              className="pl-10 h-12 text-lg font-medium bg-card border-2 border-border focus:border-accent transition-colors"
+              className="pl-10 h-12 text-lg font-medium bg-card border-2 border-border focus:border-accent transition-all"
               maxLength={18}
+              autoComplete="off"
             />
           </div>
           <Button
