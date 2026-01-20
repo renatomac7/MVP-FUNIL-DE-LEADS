@@ -189,7 +189,7 @@ export function ResultsDashboard({
               </p>
               <p>
                 💡 <strong>A janela de planejamento está se fechando.</strong> Empresas que não se
-                adaptarem pagarão {reformImpactsNegatively ? 'significativamente mais impostos' : 'mais do que o necessário'}
+                adaptarem pagarão {reformImpactsNegatively ? 'significativamente mais impostos ' : 'mais do que o necessário '}
                 ou enfrentarão riscos de autuação.
               </p>
             </AlertDescription>
