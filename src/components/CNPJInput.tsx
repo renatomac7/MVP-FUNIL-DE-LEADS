@@ -56,7 +56,7 @@ export function CNPJInput({ onDataFetched }: CNPJInputProps) {
         <Label htmlFor="cnpj" className="text-foreground font-semibold">
           CNPJ da Empresa
         </Label>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
             <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
@@ -77,7 +77,7 @@ export function CNPJInput({ onDataFetched }: CNPJInputProps) {
             disabled={isLoading || cnpj.length < 18}
             variant="hero"
             size="lg"
-            className="min-w-[140px]"
+            className="w-full sm:w-auto min-w-[140px]"
           >
             {isLoading ? (
               <Loader2 className="w-5 h-5 animate-spin" />

@@ -80,10 +80,10 @@ Quando podemos agendar uma consultoria?`;
         <Button
             onClick={handleClick}
             size="xl"
-            className="w-full h-16 bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-xl text-lg font-bold gap-3 hover:scale-105 transition-transform"
+            className="w-full h-auto py-4 min-h-[64px] bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-xl text-lg font-bold gap-3 hover:scale-105 transition-transform whitespace-normal leading-tight"
         >
-            <MessageCircle className="w-6 h-6" />
-            💬 Falar com Especialista - Garantir Esta Economia
+            <MessageCircle className="w-6 h-6 flex-shrink-0" />
+            <span>💬 Falar com Especialista - Garantir Esta Economia</span>
         </Button>
     );
 }
